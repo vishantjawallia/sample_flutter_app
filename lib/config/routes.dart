@@ -8,12 +8,12 @@ import '../views/splash/splash_view.dart';
 class Routes {
   static final List<GetPage<dynamic>> getRoutes = [
     GetPage(name: SplashView.routeName, page: () => const SplashView()),
-    GetPage(name: NewsView.routeName, page: () => NewsView()),
-    GetPage(name: NewsDetailView.routeName, page: () => NewsDetailView()),
+    GetPage(name: NewsView.routeName, page: () => const NewsView()),
+    GetPage(name: NewsDetailView.routeName, page: () => const NewsDetailView()),
   ];
   static Map<String, Widget Function(BuildContext)> routes = {
     SplashView.routeName: (p0) => const SplashView(),
-    NewsView.routeName: (p0) => NewsView(),
-    NewsDetailView.routeName: (p0) => NewsDetailView(),
+    NewsView.routeName: (p0) => const NewsView(),
+    NewsDetailView.routeName: (p0) => const NewsDetailView(),
   };
 }

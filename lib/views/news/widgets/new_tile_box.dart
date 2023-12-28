@@ -2,7 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class NewsTileBox extends StatelessWidget {
+  final String? title;
+  final String? dsc;
+  final String? img;
+  final String? source;
+  final void Function(String? value)? tileTap;
   const NewsTileBox({
+    required this.title,
+    required this.dsc,
+    required this.img,
+    required this.source,
+    required this.tileTap,
     super.key,
   });
 
@@ -15,7 +25,7 @@ class NewsTileBox extends StatelessWidget {
         elevation: 5,
         child: InkWell(
           borderRadius: BorderRadius.circular(8),
-          onTap: () {},
+          onTap: () => tileTap!(title),
           child: Column(
             children: <Widget>[
               ClipRRect(
@@ -24,8 +34,7 @@ class NewsTileBox extends StatelessWidget {
                   topRight: Radius.circular(8),
                 ),
                 child: Image.network(
-                  'https://i.ytimg.com/vi/FrFiECIXIqs/maxresdefault.jpg',
-                  // height: 200.0,
+                  img ?? 'https://i.ytimg.com/vi/FrFiECIXIqs/maxresdefault.jpg',
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -36,13 +45,17 @@ class NewsTileBox extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'WILD OVERTIME ENDING Grizzlies vs Pelicans | December 26, 2023 - NBA',
+                      title ?? 'WILD OVERTIME ENDING Grizzlies vs Pelicans | December 26, 2023 - NBA',
                       style: Get.textTheme.titleLarge,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'The Memphis Grizzlies defeated the New Orleans Pelicans, 116-115, in overtime...... ',
+                      dsc ?? 'The Memphis Grizzlies defeated the New Orleans Pelicans, 116-115, in overtime...... ',
                       style: Get.textTheme.titleSmall!.copyWith(fontWeight: FontWeight.normal),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
                     const SizedBox(height: 14),
                     Container(
@@ -52,7 +65,7 @@ class NewsTileBox extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        'YouTube',
+                        source ?? 'not found',
                         style: Get.textTheme.bodyLarge!.copyWith(color: Colors.white),
                       ),
                     ),

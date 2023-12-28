@@ -1,9 +1,16 @@
+import 'dart:developer';
+
+import 'package:get/get.dart';
+
+import 'package:sample_flutter_app/models/top_headlines.dart';
+import 'package:sample_flutter_app/views/news_detail/news_detail_view.dart';
 import 'package:stacked/stacked.dart';
 
-import 'services/news_services.dart';
+import 'services/news_service.dart';
 
-class NewsViewModel extends BaseViewModel implements NewsServices {
-  
+class NewsViewModel extends BaseViewModel with NewsService {
+  List<Articles> articles = [];
+
   NewsViewModel() {
     loadItems();
   }
@@ -11,10 +18,11 @@ class NewsViewModel extends BaseViewModel implements NewsServices {
   // Add ViewModel specific code here
   Future<void> loadItems() async {
     setBusy(true);
-    //Write your models loading codes here
-
-    //Let other views to render again
+    articles = await getHeadLines();
+    log(articles.toString());
     setBusy(false);
     notifyListeners();
   }
+
+  void tileTapHandler(String? value) => Get.to(() => NewsDetailView(id: value));
 }

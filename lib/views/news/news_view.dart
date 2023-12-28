@@ -1,11 +1,12 @@
 library news_view;
 
 import 'package:get/get.dart';
+import 'package:sample_flutter_app/theme/palettes.dart';
 import 'package:stacked/stacked.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
 import 'news_view_model.dart';
-import 'widgets/new_title_box.dart';
+import 'widgets/new_tile_box.dart';
 
 part 'news_mobile.dart';
 part 'news_tablet.dart';

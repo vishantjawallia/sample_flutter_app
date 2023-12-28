@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       title: APP_NAME,
       theme: CustomTheme.light,
       routes: Routes.routes,
-      initialRoute: SplashView.routeName,
+      home: const SplashView(),
     );
   }
 }
